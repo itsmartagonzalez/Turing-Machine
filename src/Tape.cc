@@ -5,6 +5,7 @@ void Tape::setBlankSymbol(std::string blank) {
 }
 
 void Tape::setInput(std::string input) {
+  tape_.clear();
   for (int i = 0; i < input.length(); i++) {
     tape_.push_back(std::string(1,input[i]));
   }
@@ -37,7 +38,6 @@ void Tape::moveHead(std::string move) {
 }
 
 void Tape::print() {
-  std::cout << "\nTape: ";
   for (auto x : tape_) {
     std::cout << x;
   }

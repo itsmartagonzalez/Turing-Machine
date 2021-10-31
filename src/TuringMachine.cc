@@ -60,8 +60,6 @@ void TuringMachine::setInitialState(std::fstream& input, std::vector<State>& sta
     std::string error = "\nError: starting state '" + line + "' is not in the set of states.\n";
     throw error;
   }
-  //(*iter).setStarter(true);
-  //currentState_ = &(*iter);
   currentState_ = line;
 }
 
@@ -157,13 +155,16 @@ void TuringMachine::setTransitions(std::fstream& input, std::vector<State>& stat
 }
 
 void TuringMachine::run(std::string input) {
+  std::string current = currentState_;
+  bool isRunning = true;
+  
   for (auto& tape : tapes_) {
     tape.setInput(input);
   }
-  bool isRunning = true;
+  
   while (isRunning) {
     isRunning = false;
-    State state = *std::find(states_.begin(), states_.end(), State(currentState_));
+    State state = *std::find(states_.begin(), states_.end(), State(current));
     for (auto currentTransition : state.getTransitions()) {      
       std::vector<std::string> currentTapesHeaders;
       for (int i = 0; i < tapes_.size(); i++) {
@@ -175,20 +176,20 @@ void TuringMachine::run(std::string input) {
           tapes_[i].setHeadValue(currentTransition.getTapeInput()[i]);
           tapes_[i].moveHead(currentTransition.getMoves()[i]);
         }
-        currentState_ = currentTransition.getNextState();
+        current = currentTransition.getNextState();
         isRunning = true;
         break;
       }
     }
   }
-  State finalState = *(std::find(states_.begin(), states_.end(), State(currentState_)));
+  State finalState = *(std::find(states_.begin(), states_.end(), State(current)));
   if (finalState.isAccepted()) {
-    std::cout << "\nSI";
+    std::cout << "\n\nThe input string was accepted by the Turing Machine. Congratulations!\n\n";
   } else {
-    std::cout << "\nNo";
+    std::cout << "\n\nThe input string was NOT accepted by the Turing Machine. Try another input!\n\n";
   }
   for (int i = 0; i < tapes_.size(); i++) {
-    std::cout << "\n";
+    std::cout << "\nTape " << i + 1 << ": ";
     tapes_[i].print();
   }
 }

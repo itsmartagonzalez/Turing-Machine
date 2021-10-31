@@ -14,7 +14,6 @@ class State {
   private:
     std::string identifier_;
     std::vector<Transition> transitions_;
-    bool starter_; // borrar?
     bool accepted_;
 
   public:
@@ -23,8 +22,6 @@ class State {
     ~State() {}
     void setIdentifier(std::string identifier);
     std::string getIdentifier();
-    bool isStarter();
-    void setStarter(bool starter);
     bool isAccepted();
     void setAccepted(bool accepted);
     void insertTransition(Transition transition);

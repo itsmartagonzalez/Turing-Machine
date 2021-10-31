@@ -2,16 +2,11 @@
 
 State::State(std::string identifier) {
   identifier_ = identifier;
-  starter_ = false;
   accepted_ = false;
 }
 
 std::string State::getIdentifier() {
   return identifier_;
-}
-
-void State::setStarter(bool starter) {
-  starter_ = starter;
 }
 
 void State::setAccepted(bool accepted) {
