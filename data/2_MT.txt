@@ -1,0 +1,23 @@
+# Ejemplo 2 de una MT
+# La MT recibe como parámetro una cadena binaria y separa los ceros y los unos, colocando en la cinta primero los ceros y después los unos dejando un espacio en blanco entre ellos:
+q0 q1 q2
+0 1
+0 1 .
+q0
+.
+q2
+2
+q0 0 1 q0 0 0 R R
+q0 0 0 q0 0 0 R R
+q0 1 1 q0 1 1 R S
+q0 1 0 q0 1 0 R S
+q0 . 0 q1 . . L R
+q0 . 1 q1 . . L R
+q0 . . q2 . . L L
+q1 1 . q1 1 1 L R
+q1 0 . q1 0 . L S
+q1 0 1 q1 0 1 L S
+q1 0 0 q1 0 0 L S
+q1 1 1 q1 1 1 L R
+q1 1 0 q1 1 1 L R
+q1 . . q2 . . R L
