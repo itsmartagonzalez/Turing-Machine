@@ -8,6 +8,7 @@
 #include <set>
 #include <string>
 #include <algorithm>
+#include <iomanip>
 #include "State.h"
 #include "Alphabet.h"
 #include "Tape.h"

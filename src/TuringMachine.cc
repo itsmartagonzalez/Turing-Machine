@@ -155,6 +155,7 @@ void TuringMachine::setTransitions(std::fstream& input, std::vector<State>& stat
 }
 
 void TuringMachine::run(std::string input) {
+  std::cout << "\nCurrent\t|Head\t|Next\t|Input\t|Moves\n" << std::setfill('-') <<  std::setw(40);
   std::string current = currentState_;
   bool isRunning = true;
   
@@ -184,9 +185,9 @@ void TuringMachine::run(std::string input) {
   }
   State finalState = *(std::find(states_.begin(), states_.end(), State(current)));
   if (finalState.isAccepted()) {
-    std::cout << "\n\nThe input string was accepted by the Turing Machine. Congratulations!\n\n";
+    std::cout << "\n\n\nThe input string was accepted by the Turing Machine. Congratulations!\n\n";
   } else {
-    std::cout << "\n\nThe input string was NOT accepted by the Turing Machine. Try another input!\n\n";
+    std::cout << "\n\n\nThe input string was NOT accepted by the Turing Machine. Try another input!\n\n";
   }
   for (int i = 0; i < tapes_.size(); i++) {
     std::cout << "\nTape " << i + 1 << ": ";

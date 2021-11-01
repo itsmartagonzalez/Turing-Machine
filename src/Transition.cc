@@ -29,19 +29,18 @@ std::vector<std::string> Transition::getMoves() const {
 }
 
 void Transition::print() {
-  std::cout << "\n" << currentState_ << "\t";
+  std::cout << "\n" << currentState_ << "\t|";
   for (int i = 0; i < tapeSymbols_.size(); i++) {
     std::cout << tapeSymbols_[i] << " ";
   }
-  std::cout << "\t" << nextState_ << "\t";
+  std::cout << "\t|" << nextState_ << "\t|";
   for (int i = 0; i < tapeInput_.size(); i++) {
     std::cout << tapeInput_[i] << " ";
   }
-  std::cout << "\t";
+  std::cout << "\t|";
   for (int i = 0; i < moves_.size(); i++) {
     std::cout << moves_[i] << " ";
   }
-  std::cout << "\n";
 }
 
 bool Transition::operator==(const Transition& transition) const {
