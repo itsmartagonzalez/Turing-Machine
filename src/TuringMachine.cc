@@ -166,11 +166,11 @@ void TuringMachine::run(std::string input) {
   while (isRunning) {
     isRunning = false;
     State state = *std::find(states_.begin(), states_.end(), State(current));
-    for (auto currentTransition : state.getTransitions()) {      
-      std::vector<std::string> currentTapesHeaders;
-      for (int i = 0; i < tapes_.size(); i++) {
-        currentTapesHeaders.push_back(tapes_[i].getHeadValue());
-      }
+    std::vector<std::string> currentTapesHeaders;
+    for (int i = 0; i < tapes_.size(); i++) {
+      currentTapesHeaders.push_back(tapes_[i].getHeadValue());
+    }
+    for (auto currentTransition : state.getTransitions()) {
       if (currentTapesHeaders == currentTransition.getTapeSymbols()) {
         currentTransition.print();
         for (int i = 0; i < tapes_.size(); i++) {

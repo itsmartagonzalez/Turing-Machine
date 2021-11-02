@@ -31,4 +31,4 @@ clean:
 	rm -rf ../bin/*
 
 run:
-	make -s clean && make -s && ../bin/exe ../data/Ejemplo_MT.txt
+	make -s clean && make -s && ../bin/exe

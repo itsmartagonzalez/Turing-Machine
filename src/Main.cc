@@ -9,16 +9,16 @@ int main(int argc, char *argv[]) {
     std::cin >> input;
     TuringMachine machine(input);
     std::cout << "\nThe Turing Machine has loaded successfully. Choose an option:";
-    int option = 1;
-    while (option != 0) {
+    std::string option = "1";
+    while (option != "0") {
       std::cout << "\n\n1. Insert an input string and start running the Turing Machine.\n0. Exit the program.\n → ";
       std::cin >> option;
-      if (option == 1) {
+      if (option == "1") {
         std::string input;
         std::cout << "\nIntroduce your input string:\n → ";
         std::cin >> input;
         machine.run(input);
-      } else if(option == 0) {
+      } else if(option == "0") {
         std::cout << "\nThank you for using this program. Have a nice day!\n";
       } else {
         std::cout << "\nInvalid Option. Please try again.\n";
